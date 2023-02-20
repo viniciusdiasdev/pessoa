@@ -44,8 +44,15 @@ public class PessoaController {
     @PostMapping("/{id}")
     public ResponseEntity<PessoaDto> updatePlacar(@RequestBody String pessoaDto, @PathVariable Long id){
         PessoaDto pessoaAtualizada = pessoaService.atualizaPessoa(pessoaDto, id);
-        return new ResponseEntity<>(pessoaAtualizada ,HttpStatus.OK);
 
+        return new ResponseEntity<>(pessoaAtualizada ,HttpStatus.OK);
+    }
+
+    @PostMapping("/endereco/{id}")
+    public ResponseEntity<PessoaDto> adicionaEndereco(@RequestBody String endereco, @PathVariable Long id){
+        PessoaDto pessoaDto = pessoaService.adicionaEndereco(endereco,id);
+
+        return new ResponseEntity<>(pessoaDto ,HttpStatus.OK);
     }
 
 

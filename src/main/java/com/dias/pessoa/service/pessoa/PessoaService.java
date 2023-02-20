@@ -2,7 +2,9 @@ package com.dias.pessoa.service.pessoa;
 
 import com.dias.pessoa.dataaccess.command.pessoa.PessoaCommandDataAccess;
 import com.dias.pessoa.dataaccess.query.pessoa.PessoaQueryDataAccess;
+import com.dias.pessoa.domain.endereco.Endereco;
 import com.dias.pessoa.domain.pessoa.Pessoa;
+import com.dias.pessoa.dto.endereco.EnderecoDto;
 import com.dias.pessoa.dto.pessoa.PessoaDto;
 import com.dias.pessoa.utils.ExtensaoJsonApp;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,5 +48,10 @@ public class PessoaService {
     public PessoaDto atualizaPessoa(String message, Long id) {
         PessoaDto pessoaDto = extensaoJsonApp.fromJson(message, PessoaDto.class);
         return pessoaCommandDataAccess.atualizaPessoaById(pessoaDto, id);
+    }
+
+    public PessoaDto adicionaEndereco(String message, Long id) {
+        EnderecoDto enderecoDto = extensaoJsonApp.fromJson(message, EnderecoDto.class);
+        return pessoaCommandDataAccess.acrescentaEnderecoPessoaById(enderecoDto, id);
     }
 }
