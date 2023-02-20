@@ -1,4 +1,4 @@
-package com.dias.pessoa.domain;
+package com.dias.pessoa.domain.endereco;
 
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;

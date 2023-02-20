@@ -1,9 +1,7 @@
-package com.dias.pessoa.dto;
-import com.dias.pessoa.domain.Endereco;
+package com.dias.pessoa.dto.pessoa;
+import com.dias.pessoa.domain.endereco.Endereco;
 import lombok.*;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.List;
 
 @Getter

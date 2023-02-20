@@ -1,5 +1,6 @@
-package com.dias.pessoa.domain;
+package com.dias.pessoa.domain.pessoa;
 
+import com.dias.pessoa.domain.endereco.Endereco;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

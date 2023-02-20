@@ -1,7 +1,7 @@
 package com.dias.pessoa.http;
 
-import com.dias.pessoa.dto.PessoaDto;
-import com.dias.pessoa.service.PessoaService;
+import com.dias.pessoa.dto.pessoa.PessoaDto;
+import com.dias.pessoa.service.pessoa.PessoaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -26,13 +26,13 @@ public class PessoaController {
     @GetMapping("/{id}")
     public ResponseEntity<PessoaDto> getPessoa(@PathVariable Long id){
         PessoaDto pessoaEncontada = pessoaService.getPessoa(id);
-        return new ResponseEntity<>(pessoaEncontada, HttpStatus.OK);
+        return new ResponseEntity<>(pessoaEncontada, HttpStatus.FOUND);
     }
 
     @GetMapping
     public ResponseEntity<List<PessoaDto>> getAllPessoas(){
         List<PessoaDto> todasPessoasCadastradas = pessoaService.getAll();
-        return new ResponseEntity<>(todasPessoasCadastradas, HttpStatus.CREATED);
+        return new ResponseEntity<>(todasPessoasCadastradas, HttpStatus.FOUND);
     }
 
 //    @PutMapping("/{id}")

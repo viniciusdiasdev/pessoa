@@ -1,12 +1,9 @@
-package com.dias.pessoa.service;
+package com.dias.pessoa.service.pessoa;
 
-import com.dias.pessoa.domain.Endereco;
-import com.dias.pessoa.domain.Pessoa;
-import com.dias.pessoa.dto.PessoaDto;
+import com.dias.pessoa.domain.pessoa.Pessoa;
+import com.dias.pessoa.dto.pessoa.PessoaDto;
 
-import java.util.List;
-
-public class PessoaToPessoaDto {
+public class PessoaDomainToPessoaDto {
 
 
     public static PessoaDto converte(Pessoa pessoa){

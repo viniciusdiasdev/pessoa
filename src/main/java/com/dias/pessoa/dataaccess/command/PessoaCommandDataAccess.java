@@ -1,13 +1,12 @@
 package com.dias.pessoa.dataaccess.command;
 
-import com.dias.pessoa.domain.Pessoa;
-import com.dias.pessoa.dto.PessoaDto;
-import com.dias.pessoa.repository.PessoaRepository;
+import com.dias.pessoa.domain.pessoa.Pessoa;
+import com.dias.pessoa.dto.pessoa.PessoaDto;
+import com.dias.pessoa.repository.pessoa.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 
 @Component
 public class PessoaCommandDataAccess {

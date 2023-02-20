@@ -1,8 +1,7 @@
-package com.dias.pessoa.dataaccess.query;
+package com.dias.pessoa.dataaccess.query.pessoa;
 
-import com.dias.pessoa.domain.Pessoa;
-import com.dias.pessoa.dto.PessoaDto;
-import com.dias.pessoa.repository.PessoaRepository;
+import com.dias.pessoa.domain.pessoa.Pessoa;
+import com.dias.pessoa.repository.pessoa.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
