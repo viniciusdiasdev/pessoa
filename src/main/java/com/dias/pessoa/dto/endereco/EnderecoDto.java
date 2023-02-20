@@ -15,4 +15,6 @@ public class EnderecoDto {
     private String cep;
     private String numero;
     private String cidade;
+
+    private Boolean enderecoPrincipal;
 }

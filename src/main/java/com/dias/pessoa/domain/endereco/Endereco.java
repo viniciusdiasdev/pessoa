@@ -1,9 +1,6 @@
 package com.dias.pessoa.domain.endereco;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -23,5 +20,8 @@ public class Endereco {
     private String cep;
     private String numero;
     private String cidade;
+
+    @Column(name = "eh_endereco_principal")
+    private Boolean enderecoPrincipal;
 
 }

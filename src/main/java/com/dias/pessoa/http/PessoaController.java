@@ -35,6 +35,12 @@ public class PessoaController {
         return new ResponseEntity<>(todasPessoasCadastradas, HttpStatus.FOUND);
     }
 
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> deletePessoa(@PathVariable Long id){
+        pessoaService.deleteById(id);
+        return new ResponseEntity<>("Deletado com sucesso" ,HttpStatus.OK);
+    }
+
 //    @PutMapping("/{id}")
 //    public ResponseEntity<PessoaDto> updatePlacar(@RequestBody Map<String, Object> placar, @PathVariable Integer id){
 //        placarService.updatePlacar(placar, id);

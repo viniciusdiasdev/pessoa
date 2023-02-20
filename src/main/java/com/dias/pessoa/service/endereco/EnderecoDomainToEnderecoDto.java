@@ -13,6 +13,7 @@ public class EnderecoDomainToEnderecoDto {
                 .cep(endereco.getCep())
                 .cidade(endereco.getCidade())
                 .logradouro(endereco.getLogradouro())
+                .enderecoPrincipal(endereco.getEnderecoPrincipal())
                 .build();
         return enderecoDto;
     }

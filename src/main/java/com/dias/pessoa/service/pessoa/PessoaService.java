@@ -1,6 +1,6 @@
 package com.dias.pessoa.service.pessoa;
 
-import com.dias.pessoa.dataaccess.command.PessoaCommandDataAccess;
+import com.dias.pessoa.dataaccess.command.pessoa.PessoaCommandDataAccess;
 import com.dias.pessoa.dataaccess.query.pessoa.PessoaQueryDataAccess;
 import com.dias.pessoa.domain.pessoa.Pessoa;
 import com.dias.pessoa.dto.pessoa.PessoaDto;
@@ -37,5 +37,9 @@ public class PessoaService {
         List<PessoaDto> pessoaDtoList = new ArrayList<>();
         pessoaList.forEach(pessoa -> pessoaDtoList.add(PessoaDomainToPessoaDto.converte(pessoa)));
         return pessoaDtoList;
+    }
+
+    public void deleteById(Long id) {
+        pessoaCommandDataAccess.deletePessoaById(id);
     }
 }
