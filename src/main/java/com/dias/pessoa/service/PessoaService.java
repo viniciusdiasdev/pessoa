@@ -8,6 +8,9 @@ import com.dias.pessoa.utils.ExtensaoJsonApp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class PessoaService {
 
@@ -27,5 +30,12 @@ public class PessoaService {
     public PessoaDto getPessoa(Long id) {
         Pessoa pessoaById = pessoaQueryDataAccess.findById(id);
         return PessoaToPessoaDto.converte(pessoaById);
+    }
+
+    public List<PessoaDto> getAll() {
+        List<Pessoa> pessoaList = pessoaQueryDataAccess.findAll();
+        List<PessoaDto> pessoaDtoList = new ArrayList<>();
+        pessoaList.forEach(pessoa -> pessoaDtoList.add(PessoaToPessoaDto.converte(pessoa)));
+        return pessoaDtoList;
     }
 }

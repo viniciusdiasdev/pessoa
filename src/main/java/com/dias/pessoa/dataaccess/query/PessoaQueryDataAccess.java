@@ -6,6 +6,7 @@ import com.dias.pessoa.repository.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
+import java.util.List;
 import java.util.Optional;
 
 @Component
@@ -24,5 +25,10 @@ public class PessoaQueryDataAccess {
             System.out.println("Nao encontrada");
         }
         return pessoaEncontrada.get();
+    }
+
+    public List<Pessoa> findAll() {
+        List<Pessoa> pessoaList = pessoaRepository.findAll();
+        return pessoaList;
     }
 }
