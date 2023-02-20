@@ -41,10 +41,12 @@ public class PessoaController {
         return new ResponseEntity<>("Deletado com sucesso" ,HttpStatus.OK);
     }
 
-//    @PutMapping("/{id}")
-//    public ResponseEntity<PessoaDto> updatePlacar(@RequestBody Map<String, Object> placar, @PathVariable Integer id){
-//        placarService.updatePlacar(placar, id);
-//    }
-//
+    @PostMapping("/{id}")
+    public ResponseEntity<PessoaDto> updatePlacar(@RequestBody String pessoaDto, @PathVariable Long id){
+        PessoaDto pessoaAtualizada = pessoaService.atualizaPessoa(pessoaDto, id);
+        return new ResponseEntity<>(pessoaAtualizada ,HttpStatus.OK);
+
+    }
+
 
 }

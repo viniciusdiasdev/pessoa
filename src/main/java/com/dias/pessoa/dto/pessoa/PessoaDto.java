@@ -1,5 +1,6 @@
 package com.dias.pessoa.dto.pessoa;
 import com.dias.pessoa.domain.endereco.Endereco;
+import com.dias.pessoa.dto.endereco.EnderecoDto;
 import lombok.*;
 
 import java.util.List;

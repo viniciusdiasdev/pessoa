@@ -19,16 +19,6 @@ public class EnderecoCommandDataAccess {
     @Autowired
     PessoaRepository pessoaRepository;
 
-    public PessoaDto cadastrarPessoa(PessoaDto pessoaDto){
-        LocalDate dataNascimento = LocalDate.parse(pessoaDto.getDataNascimento());
-        Pessoa pessoa = Pessoa.builder()
-                .nome(pessoaDto.getNome())
-                .dataNascimento(dataNascimento)
-                .enderecos(pessoaDto.getEnderecos())
-                .build();
-        pessoaRepository.save(pessoa);
-        return pessoaDto;
-    }
 
     public EnderecoDto cadastrarEndereco(EnderecoDto enderecoDto) {
 

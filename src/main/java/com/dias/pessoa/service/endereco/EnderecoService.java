@@ -16,22 +16,8 @@ import java.util.List;
 public class EnderecoService {
 
     @Autowired
-    ExtensaoJsonApp extensaoJsonApp;
-    @Autowired
-    EnderecoCommandDataAccess enderecoCommandDataAccess;
-
-    @Autowired
     EnderecoQueryDataAccess enderecoQueryDataAccess;
 
-    public EnderecoDto cadastrarEndereco(String message) {
-        EnderecoDto enderecoDto = extensaoJsonApp.fromJson(message, EnderecoDto.class);
-        return enderecoCommandDataAccess.cadastrarEndereco(enderecoDto);
-    }
-
-    public EnderecoDto getEnderecoByIdPessoa(Long id) {
-        Endereco enderecoById = enderecoQueryDataAccess.findById(id);
-        return EnderecoDomainToEnderecoDto.converte(enderecoById);
-    }
 
     public List<EnderecoDto> getAll() {
         List<Endereco> enderecoList = enderecoQueryDataAccess.findAll();

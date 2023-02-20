@@ -42,4 +42,9 @@ public class PessoaService {
     public void deleteById(Long id) {
         pessoaCommandDataAccess.deletePessoaById(id);
     }
+
+    public PessoaDto atualizaPessoa(String message, Long id) {
+        PessoaDto pessoaDto = extensaoJsonApp.fromJson(message, PessoaDto.class);
+        return pessoaCommandDataAccess.atualizaPessoaById(pessoaDto, id);
+    }
 }
