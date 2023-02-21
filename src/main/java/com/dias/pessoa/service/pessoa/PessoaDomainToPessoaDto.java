@@ -16,12 +16,12 @@ public class PessoaDomainToPessoaDto {
         PessoaDto pessoaDto = PessoaDto.builder()
                 .nome(pessoa.getNome())
                 .dataNascimento(String.valueOf(pessoa.getDataNascimento()))
-                .enderecos(pessoa.getEnderecos())
+                .enderecoDtoList(PessoaDomainToPessoaDto.converteEnderecos(pessoa.getEnderecos()))
                 .build();
         return pessoaDto;
     }
 
-    public List<EnderecoDto> converteEnderecos(List<Endereco> enderecoList){
+    public static List<EnderecoDto> converteEnderecos(List<Endereco> enderecoList){
         List<EnderecoDto> enderecoDtoList = new ArrayList<>();
         enderecoList.forEach(endereco -> enderecoDtoList.add(EnderecoDomainToEnderecoDto.converte(endereco)));
         return enderecoDtoList;

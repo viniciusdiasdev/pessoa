@@ -1,5 +1,7 @@
 package com.dias.pessoa.dataaccess.query.pessoa;
 
+import com.dias.pessoa.dataaccess.query.endereco.EnderecoQueryDataAccess;
+import com.dias.pessoa.domain.endereco.Endereco;
 import com.dias.pessoa.domain.pessoa.Pessoa;
 import com.dias.pessoa.repository.pessoa.PessoaRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +15,8 @@ public class PessoaQueryDataAccess {
 
     @Autowired
     PessoaRepository pessoaRepository;
+    @Autowired
+    EnderecoQueryDataAccess enderecoQueryDataAccess;
 
     public Pessoa findById(Long id){
         Optional<Pessoa> optionalPessoa = pessoaRepository.findById(id);
@@ -29,5 +33,10 @@ public class PessoaQueryDataAccess {
     public List<Pessoa> findAll() {
         List<Pessoa> pessoaList = pessoaRepository.findAll();
         return pessoaList;
+    }
+
+    public List<Endereco> findAllEnderecosById(Long id) {
+        List<Endereco> enderecoList = enderecoQueryDataAccess.findAllByPessoaId(id);
+        return enderecoList;
     }
 }

@@ -15,4 +15,6 @@ public class PessoaDto {
     private String nome;
     private String dataNascimento;
     private List<Endereco> enderecos;
+
+    private List<EnderecoDto> enderecoDtoList;
 }

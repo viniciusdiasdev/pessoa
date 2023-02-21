@@ -1,5 +1,6 @@
 package com.dias.pessoa.dataaccess.command.pessoa;
 
+import com.dias.pessoa.dataaccess.command.endereco.EnderecoCommandDataAccess;
 import com.dias.pessoa.dataaccess.query.pessoa.PessoaQueryDataAccess;
 import com.dias.pessoa.domain.endereco.Endereco;
 import com.dias.pessoa.domain.pessoa.Pessoa;
@@ -19,6 +20,8 @@ public class PessoaCommandDataAccess {
     PessoaRepository pessoaRepository;
     @Autowired
     PessoaQueryDataAccess pessoaQueryDataAccess;
+    @Autowired
+    EnderecoCommandDataAccess enderecoCommandDataAccess;
 
     public PessoaDto cadastrarPessoa(PessoaDto pessoaDto){
         LocalDate dataNascimento = LocalDate.parse(pessoaDto.getDataNascimento());
@@ -28,7 +31,14 @@ public class PessoaCommandDataAccess {
                 .enderecos(pessoaDto.getEnderecos())
                 .build();
         pessoaRepository.save(pessoa);
+        saveEnderecos(pessoa);
         return pessoaDto;
+    }
+
+    public void saveEnderecos(Pessoa pessoa){
+        List<Endereco> enderecos = pessoa.getEnderecos();
+        enderecos.forEach(endereco -> endereco.setPessoa(pessoa));
+        enderecoCommandDataAccess.saveAll(enderecos);
     }
 
     public PessoaDto atualizaPessoaById(PessoaDto pessoaDto, Long id){
@@ -58,6 +68,7 @@ public class PessoaCommandDataAccess {
                 .enderecoPrincipal(enderecoDto.getEnderecoPrincipal())
                 .build();
         enderecosList.add(endereco);
+        saveEnderecos(pessoa);
         pessoaRepository.save(pessoa);
         return PessoaDomainToPessoaDto.converte(pessoa);
     }

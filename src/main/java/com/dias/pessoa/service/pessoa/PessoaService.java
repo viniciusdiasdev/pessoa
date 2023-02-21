@@ -6,6 +6,7 @@ import com.dias.pessoa.domain.endereco.Endereco;
 import com.dias.pessoa.domain.pessoa.Pessoa;
 import com.dias.pessoa.dto.endereco.EnderecoDto;
 import com.dias.pessoa.dto.pessoa.PessoaDto;
+import com.dias.pessoa.service.endereco.EnderecoDomainToEnderecoDto;
 import com.dias.pessoa.utils.ExtensaoJsonApp;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,18 +21,19 @@ public class PessoaService {
     ExtensaoJsonApp extensaoJsonApp;
     @Autowired
     PessoaCommandDataAccess pessoaCommandDataAccess;
-
     @Autowired
     PessoaQueryDataAccess pessoaQueryDataAccess;
 
-    public PessoaDto cadastrarPessoa(String message) {
+    public String cadastrarPessoa(String message) {
         PessoaDto pessoaDto = extensaoJsonApp.fromJson(message, PessoaDto.class);
-        return pessoaCommandDataAccess.cadastrarPessoa(pessoaDto);
+        pessoaCommandDataAccess.cadastrarPessoa(pessoaDto);
+        return message;
     }
 
-    public PessoaDto getPessoa(Long id) {
+    public String getPessoa(Long id) {
         Pessoa pessoaById = pessoaQueryDataAccess.findById(id);
-        return PessoaDomainToPessoaDto.converte(pessoaById);
+        PessoaDto pessoaDto = PessoaDomainToPessoaDto.converte(pessoaById);
+        return extensaoJsonApp.toJson(pessoaDto);
     }
 
     public List<PessoaDto> getAll() {
@@ -53,5 +55,12 @@ public class PessoaService {
     public PessoaDto adicionaEndereco(String message, Long id) {
         EnderecoDto enderecoDto = extensaoJsonApp.fromJson(message, EnderecoDto.class);
         return pessoaCommandDataAccess.acrescentaEnderecoPessoaById(enderecoDto, id);
+    }
+
+    public List<EnderecoDto> getAllEnderecosById(Long id) {
+        List<Endereco> enderecosList =  pessoaQueryDataAccess.findAllEnderecosById(id);
+        List<EnderecoDto> enderecoDtoList = new ArrayList<>();
+        enderecosList.forEach(endereco -> enderecoDtoList.add(EnderecoDomainToEnderecoDto.converte(endereco)));
+        return enderecoDtoList;
     }
 }

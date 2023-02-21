@@ -1,6 +1,8 @@
 package com.dias.pessoa.domain.pessoa;
 
 import com.dias.pessoa.domain.endereco.Endereco;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -20,10 +22,10 @@ public class Pessoa {
     @Column(name = "data_de_nascimento")
     private LocalDate dataNascimento;
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(mappedBy = "pessoa", cascade = CascadeType.ALL)
     @Column(name = "lista_de_endereco")
+    @JsonManagedReference
     private List<Endereco> enderecos;
-
 
     public Pessoa() {
 
