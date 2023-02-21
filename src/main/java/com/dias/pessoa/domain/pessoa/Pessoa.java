@@ -1,7 +1,6 @@
 package com.dias.pessoa.domain.pessoa;
 
 import com.dias.pessoa.domain.endereco.Endereco;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
