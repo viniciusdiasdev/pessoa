@@ -1,6 +1,7 @@
 package com.dias.pessoa.service.pessoa;
 
 import com.dias.pessoa.dataaccess.command.pessoa.PessoaCommandDataAccess;
+import com.dias.pessoa.dataaccess.query.endereco.EnderecoQueryDataAccess;
 import com.dias.pessoa.dataaccess.query.pessoa.PessoaQueryDataAccess;
 import com.dias.pessoa.domain.endereco.Endereco;
 import com.dias.pessoa.domain.pessoa.Pessoa;
@@ -21,6 +22,8 @@ public class PessoaService {
     ExtensaoJsonApp extensaoJsonApp;
     @Autowired
     PessoaCommandDataAccess pessoaCommandDataAccess;
+    @Autowired
+    EnderecoQueryDataAccess enderecoQueryDataAccess;
     @Autowired
     PessoaQueryDataAccess pessoaQueryDataAccess;
 
@@ -58,7 +61,7 @@ public class PessoaService {
     }
 
     public List<EnderecoDto> getAllEnderecosById(Long id) {
-        List<Endereco> enderecosList =  pessoaQueryDataAccess.findAllEnderecosById(id);
+        List<Endereco> enderecosList =  enderecoQueryDataAccess.findAllByPessoaId(id);
         List<EnderecoDto> enderecoDtoList = new ArrayList<>();
         enderecosList.forEach(endereco -> enderecoDtoList.add(EnderecoDomainToEnderecoDto.converte(endereco)));
         return enderecoDtoList;

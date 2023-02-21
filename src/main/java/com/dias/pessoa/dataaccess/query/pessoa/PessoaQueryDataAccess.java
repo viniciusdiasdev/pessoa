@@ -34,9 +34,4 @@ public class PessoaQueryDataAccess {
         List<Pessoa> pessoaList = pessoaRepository.findAll();
         return pessoaList;
     }
-
-    public List<Endereco> findAllEnderecosById(Long id) {
-        List<Endereco> enderecoList = enderecoQueryDataAccess.findAllByPessoaId(id);
-        return enderecoList;
-    }
 }

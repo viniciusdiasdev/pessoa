@@ -17,21 +17,6 @@ public class EnderecoQueryDataAccess {
     @Autowired
     EnderecoRepository enderecoRepository;
 
-    @Autowired
-    PessoaRepository pessoaRepository;
-
-    public Endereco findById(Long id){
-        Optional<Endereco> optionalEndereco = enderecoRepository.findById(id);
-        return getOptionalEndereco(optionalEndereco);
-    }
-
-    public Endereco getOptionalEndereco(Optional<Endereco> enderecoOptional){
-        if(enderecoOptional.isEmpty()){
-            System.out.println("Endereco nao encontrado");
-        }
-        return enderecoOptional.get();
-    }
-
     public List<Endereco> findAll() {
         List<Endereco> enderecosList = enderecoRepository.findAll();
         return enderecosList;
